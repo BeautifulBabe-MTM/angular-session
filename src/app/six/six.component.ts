@@ -12,11 +12,14 @@ export class SixComponent {
 
   saveInput() {
     console.log(this.inputValue);
-    this.sharedService.key= this.inputValue;
-    this.sharedService.acess =true;
+    if (this.inputValue.length != 40) {
+      alert("Кол-во символов в API ключе должно быть 40.")
+    }
+    this.sharedService.key = this.inputValue;
+    this.sharedService.acess = true;
   }
   openLink() {
-    const url = 'https://api.nasa.gov'; // Замените ссылку на нужную
+    const url = 'https://api.nasa.gov';
     window.open(url, '_blank');
   }
 }

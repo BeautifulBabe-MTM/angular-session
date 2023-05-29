@@ -12,17 +12,17 @@
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 5px;
-  background-color: #e7e7e7;
+  background-color: #ffd901;
   color: #333;
   cursor: pointer;
 }
 
 .button:hover {
-  background-color: #ccc;
+  background-color: #caae11;
 }
 
 .button:active {
-  background-color: #aaa;
+  background-color: #94800d;
 }
 
 .text {
@@ -36,4 +36,18 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
   height: 50px;
+}
+
+.text-warn {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.link-text{
+  cursor: pointer;
+  color: royalblue;
 }
