@@ -18,7 +18,7 @@ constructor(private http: HttpClient, private sharedService: SharedService) {
   }
 
   ngOnInit() {
-    this.http.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-${this.day}-3&api_key=AbnXhIuJIedy22Mu18fd2qZDuc3yBcBFg7Ek1Bu2`)
+    this.http.get(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=2015-${this.day}-3&api_key=${this.sharedService.key}`)
       .subscribe(data => {
        
         let temp: string = JSON.stringify(data);

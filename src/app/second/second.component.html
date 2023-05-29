@@ -3,9 +3,9 @@
         <p class="text" (click)="getAsteroidName()">{{ getAsteroidName() }}</p>
         <p class="text">{{ getMinEstimatedDiameter() }}</p>
         <p class="text">{{ getMaxEstimatedDiameter() }}</p>
-        <button class="button button-left" (click)="lastImage()">Button Left</button>
         <img [src]="urls[currentIndex]" alt="Asteroid Image">
-        <button class="button button-right" (click)="nextImage()">Button Right</button>
+        <button class="button button-left" (click)="lastImage()">Previous</button>
+        <button class="button button-right" (click)="nextImage()">Next</button>
     </div>
 </div>
 

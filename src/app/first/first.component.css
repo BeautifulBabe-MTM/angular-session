@@ -25,13 +25,30 @@
   
   .button-left {
     float: left;
+    height: auto;
+    width: 100px;
     background-color: #007bff;
+  }
+  .button-left:hover {
+    float: left;
+    height: auto;
+    width: 100px;
+    background-color: #0959ad;
   }
   
   .button-right {
     float: right;
+    height: auto;
+    width: 100px;
     background-color: #dc3545;
   }
+  .button-right:hover {
+    float: right;
+    height: auto;
+    width: 100px;
+    background-color: #992632;
+  }
+  
   
   #photo {
     display: inline-block;
