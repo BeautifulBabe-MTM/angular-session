@@ -35,8 +35,30 @@ nav {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* тень */
   }
   
-.center-wrapper {
+.tabs {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.tabs__item {
+  padding: 10px 20px;
+  margin: 0 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+.tabs__item.active {
+  background-color: #c8ff00;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.tabs__item:hover {
+  background-color: #ccc;
 }
