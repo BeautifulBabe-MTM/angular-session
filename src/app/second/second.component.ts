@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { SharedService } from '../shared.service';
+// API KEY - 4O7kxB74PxdUdOoK17f0pcqLZn4kJAmUDJrWYgbt
 
 interface Asteroid {
   id: string;
@@ -37,6 +38,7 @@ export class SecondComponent {
   public isFetchingImages: boolean = true;
 
   constructor(private http: HttpClient, private sharedService: SharedService) {
+    this.urls = [];
   }
 
   ngOnInit() {
@@ -53,28 +55,22 @@ export class SecondComponent {
         });
       });
   }
-  // 'AbnXhIuJIedy22Mu18fd2qZDuc3yBcBFg7Ek1Bu2'
+
   private fetchAsteroidImages() {
-    const apiKey = 'AbnXhIuJIedy22Mu18fd2qZDuc3yBcBFg7Ek1Bu2'; // Replace with your actual API key
     const imageRequests = [];
-  
+
     for (const asteroid of this.asteroidData) {
       console.log(asteroid.close_approach_data)
       for (const closeApproachData of asteroid.close_approach_data) {
-        
         const formattedDate = closeApproachData.close_approach_date;
-        const url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${formattedDate}`;
+        const url = `https://api.nasa.gov/planetary/apod?api_key=${this.sharedService.key}&date=${formattedDate}`;
         imageRequests.push(this.http.get(url).pipe(
           map((data: any) => data.url)
         ));
       }
     }
-  
     return forkJoin(imageRequests);
   }
-  
-  
-  
 
   public nextImage() {
     if (!this.isFetchingImages) {

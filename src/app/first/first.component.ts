@@ -10,20 +10,19 @@ import { SharedService } from '../shared.service';
 export class FirstComponent {
   public nasa!: Nasa[];
   public currentIndex: number = 0;
-  public urls! : string[];
-  public componentOpened: boolean = false; 
+  public urls!: string[];
+  public componentOpened: boolean = false;
 
   constructor(private http: HttpClient, private sharedService: SharedService) {
     this.urls = [];
   }
   ngOnInit() {
-   
     this.http.get(`https://api.nasa.gov/planetary/apod?api_key=${this.sharedService.key}&count=100`)
       .subscribe(data => {
         let temp: string = JSON.stringify(data);
         this.nasa = JSON.parse(temp);
       });
-    
+
   }
 
   public nextImage() {
@@ -34,7 +33,7 @@ export class FirstComponent {
     } else {
       this.currentIndex = 0;
     }
-   
+
   }
   public lastImage() {
     this.urls = [];
@@ -47,14 +46,12 @@ export class FirstComponent {
   }
   public showCopyright() {
     this.urls = [];
-   this.nasa.forEach(element => {
-     if(element.copyright == this.nasa[this.currentIndex].copyright){
+    this.nasa.forEach(element => {
+      if (element.copyright == this.nasa[this.currentIndex].copyright) {
         this.urls.push(element.hdurl);
-     }
-   });
-   
+      }
+    });
   }
-  
 }
 
 export class Nasa {

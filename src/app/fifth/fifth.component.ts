@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from '../shared.service';
+// API KEY - 4O7kxB74PxdUdOoK17f0pcqLZn4kJAmUDJrWYgbt
 
 @Component({
   selector: 'app-fifth',
@@ -10,8 +11,8 @@ import { SharedService } from '../shared.service';
 export class FifthComponent {
   public nasa!: MyObject[];
   public currentIndex: number = 0;
-  public urls! : string[];
-  public day : number = 5;
+  public urls!: string[];
+  public day: number = 5;
   public photos: string[] = [];
 
   constructor(private http: HttpClient, private sharedService: SharedService) {
@@ -20,39 +21,30 @@ export class FifthComponent {
   ngOnInit() {
     this.http.get(`https://api.nasa.gov/EPIC/api/natural/date/2019-05-30?api_key=${this.sharedService.key}`)
       .subscribe(data => {
-       console.log(data)
+        console.log(data)
         let temp: string = JSON.stringify(data);
         this.nasa = JSON.parse(temp);
         this.loadPhotos();
       });
   }
- // https://epic.gsfc.nasa.gov/archive/natural/2015/10/31/png/
-  // https://epic.gsfc.nasa.gov/archive/natural/2015/10/31/png/epic_1b_20151031074844.png
   loadPhotos() {
     this.nasa.forEach((item) => {
       let year: number = parseInt(item.date.split('-')[0]);
       let month: number = parseInt(item.date.split('-')[1]);
       let day: number = parseInt(item.date.split('-')[2]);
-      const apiUrl = 'https://epic.gsfc.nasa.gov/archive/natural/' + year + '/0' + month + '/' + day + '/png/' + item.image+".png";
-  
+      const apiUrl = 'https://epic.gsfc.nasa.gov/archive/natural/' + year + '/0' + month + '/' + day + '/png/' + item.image + ".png";
+
       this.photos.push(apiUrl);
-      
+
     });
-  
-    
   }
-  
 
   public nextImage() {
-   this.currentIndex++;
+    this.currentIndex++;
   }
-  
-   
-  
   public lastImage() {
-   this.currentIndex--;
+    this.currentIndex--;
   }
-
 }
 
 interface MyObject {
@@ -118,5 +110,3 @@ interface MyObject {
 interface Photo {
   url: string;
 }
-
-// https://api.nasa.gov/EPIC/api/natural/date/2019-05-30?api_key=DEMO_KEY 

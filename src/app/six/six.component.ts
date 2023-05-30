@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SharedService } from '../shared.service';
+// API KEY - 4O7kxB74PxdUdOoK17f0pcqLZn4kJAmUDJrWYgbt
 
 @Component({
   selector: 'app-six',

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SharedService } from '../shared.service';
+// API KEY - 4O7kxB74PxdUdOoK17f0pcqLZn4kJAmUDJrWYgbt
 
 @Component({
   selector: 'app-third',
@@ -10,8 +11,8 @@ import { SharedService } from '../shared.service';
 export class ThirdComponent {
   public nasa!: ImageResponse;
   public currentIndex: number = 0;
-  public urls! : string[];
-  public day : number = 1;
+  public urls!: string[];
+  public day: number = 1;
 
   constructor(private http: HttpClient, private sharedService: SharedService) {
     this.urls = [];
@@ -19,7 +20,7 @@ export class ThirdComponent {
   ngOnInit() {
     this.http.get(`https://api.nasa.gov/planetary/earth/assets?lon=-95.33&lat=29.78&date=2020-${this.day}-11&&dim=0.10&api_key=${this.sharedService.key}`)
       .subscribe(data => {
-       
+
         let temp: string = JSON.stringify(data);
         this.nasa = JSON.parse(temp);
       });
@@ -29,32 +30,21 @@ export class ThirdComponent {
     this.day++;
     this.http.get(`https://api.nasa.gov/planetary/earth/assets?lon=-95.33&lat=29.78&date=2020-${this.day}-11&&dim=0.10&api_key=${this.sharedService.key}`)
       .subscribe(data => {
-        console.log(data); // Отладочный вывод
+        console.log(data);
         let temp: string = JSON.stringify(data);
         this.nasa = JSON.parse(temp);
       });
   }
-  
-   
-  
+
   public lastImage() {
     this.day--;
     this.http.get(`https://api.nasa.gov/planetary/earth/assets?lon=-95.33&lat=29.78&date=2020-${this.day}-11&&dim=0.10&api_key=${this.sharedService.key}`)
       .subscribe(data => {
-        console.log(data); // Отладочный вывод
+        console.log(data);
         let temp: string = JSON.stringify(data);
         this.nasa = JSON.parse(temp);
       });
   }
-  // public showCopyright() {
-  //   this.urls = [];
-  //  this.nasa.forEach(element => {
-  //    if(element.copyright == this.nasa[this.currentIndex].copyright){
-  //       this.urls.push(element.hdurl);
-  //    }
-  //  });
-   
-  // }
 }
 
 interface ImageResponse {
@@ -64,7 +54,6 @@ interface ImageResponse {
     dataset: string;
     planet: string;
   };
-   service_version: string;
-    url: string;
+  service_version: string;
+  url: string;
 }
- 
