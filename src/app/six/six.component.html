@@ -1,5 +1,5 @@
-<h2 class="text">Аутентификация</h2>
-<textarea class="input-field" [(ngModel)]="inputValue" placeholder="Введите свой API ключ"></textarea>
-<h4 class="text-warn">Если у Вас не открываются вкладки, проверье правильно ли вы ввели API ключа. Если у вас его нет, вы можете <span (click)="openLink()" class="link-text">получить API ключ NASA</span></h4>
+<h2 class="block">Аутентификация</h2>
+<input class="api-field" [(ngModel)]="inputValue" placeholder="Введите свой API ключ">
+<h4 class="text-warn">Если у Вас не открываются вкладки, проверье правильно ли вы ввели API ключ. Если у вас его нет, вы можете <span (click)="openLink()" class="link-text">получить API ключ NASA</span></h4>
 <button (click)="saveInput()" class="button">Подключиться</button>
 <!-- <button (click)="openLink()" class="button">Получить API ключ NASA</button> -->
